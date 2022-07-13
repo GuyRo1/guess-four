@@ -1,3 +1,13 @@
+
+.container{
+    width:80%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
 .options {
     display: flex;
     width: 80%;
@@ -5,8 +15,8 @@
     gap: 20px;
     justify-content: center;
     align-items: center;
-    background-color: black;
-    border-radius: 10px;
+
+    
 }
 
 .option {
