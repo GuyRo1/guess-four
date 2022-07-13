@@ -1,0 +1,30 @@
+.options {
+    display: flex;
+    width: 80%;
+    height: 300px;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border-radius: 10px;
+}
+
+.option {
+    width: 9%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.option:hover,.option:active{
+    background-color: gainsboro;
+    cursor: pointer;
+}
+
+.option:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
