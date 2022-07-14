@@ -20,7 +20,7 @@ const DisplayStatus = ({ status }: Props) => {
     }, [status])
 
     const wrapperClass = useMemo(() =>
-        status === 'pending' ? 'status-wrapper' : 'invisible status-wrapper'
+        status === 'pending' ? 'invisible status-wrapper' : `${status} status-wrapper`
         , [status])
 
     return (

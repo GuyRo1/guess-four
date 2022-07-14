@@ -24,7 +24,10 @@ function GuessFour() {
     }, [answer])
 
     const keyBoardListener = useCallback((event: any) => {
+        
+        
         const key: string | number = event.key || event.keyCode;
+        console.log(key);
         const guess: number = parseInt(key.toString())
         if (options.includes(guess)) {
             updateQuestion(guess)
@@ -59,7 +62,6 @@ function GuessFour() {
             setGuessProgress([]);
 
             if (status === 'win') {
-                console.log("wowoowowowoow");
                 setAnswer(getNewAnswer())
             }
         }

@@ -1,9 +1,14 @@
-@use '../../styles/constants' as *;
+@use "../../styles/constants" as *;
 
 .status-wrapper {
     width: 60px;
     position: absolute;
-    bottom:30%;
+    left: -100px;
+
+    @media (min-width: $desktopView) {
+        bottom: -100px;
+        left: auto;
+    }
 
     svg {
         width: 100%;
@@ -77,4 +82,8 @@
             stroke-dashoffset: 900;
         }
     }
+}
+
+.invisible{
+    display:none;
 }

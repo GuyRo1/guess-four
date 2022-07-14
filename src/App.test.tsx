@@ -1,9 +1,11 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders app and checks for cards', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const questionMarks = screen.getAllByText('?');
+  expect(questionMarks.length).toBe(4)
+  questionMarks.forEach(questionMark=>{
+    expect(questionMark).toBeInTheDocument();
+  })
 });
