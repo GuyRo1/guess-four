@@ -32,10 +32,10 @@ function GuessFour() {
 
 
     useEffect(() => {
-        window.document.addEventListener('keyup', keyboardListener)
+        window.addEventListener('keyup', keyboardListener)
 
         return () => {
-            window.document.removeEventListener('keyup', keyboardListener)
+            window.removeEventListener('keyup', keyboardListener)
         }
     }, [keyboardListener])
 
