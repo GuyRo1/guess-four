@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# Guess Four
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Guess the four digits code.
+
+This project is a react app mini game, the app will choose a four digits number and the user will guess it.
+
+The input for the app is keyboard only.
 
 ## Available Scripts
 
@@ -39,8 +43,4 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

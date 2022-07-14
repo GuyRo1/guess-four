@@ -21,7 +21,7 @@ function GuessFour() {
         counter.current++;
     }, [answer])
 
-    const keyBoardListener = useCallback((event: any) => {
+    const keyboardListener = useCallback((event: any) => {
         const key: string | number = event.key || event.keyCode;
         const guess: number = parseInt(key.toString())
         
@@ -32,12 +32,12 @@ function GuessFour() {
 
 
     useEffect(() => {
-        window.document.addEventListener('keyup', keyBoardListener)
+        window.document.addEventListener('keyup', keyboardListener)
 
         return () => {
-            window.document.removeEventListener('keyup', keyBoardListener)
+            window.document.removeEventListener('keyup', keyboardListener)
         }
-    }, [keyBoardListener])
+    }, [keyboardListener])
 
     useEffect(() => {
         if (question.length === 4) {

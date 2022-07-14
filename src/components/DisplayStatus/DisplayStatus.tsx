@@ -24,7 +24,7 @@ const DisplayStatus = ({ className, status }: Props) => {
     const wrapperClass = useMemo(() =>{
         const base = className
         const calculate = status === 'pending' ? 'invisible status-wrapper' : `${status} status-wrapper`
-        return base+' '+calculate
+        return (base+' '+calculate).trim();
     }, [status])
 
     return (
