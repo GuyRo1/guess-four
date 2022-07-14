@@ -4,9 +4,12 @@ import Question from '../Question/Question';
 import { getNewAnswer, questionEqualsAnswer } from '../../utils/utils';
 import { options } from '../../constants/constants'
 import { Status } from '../../types/types';
+import { memo } from 'react'
+import WinModal from '../WinModal/WinModal';
 
 
 function GuessFour() {
+    const [showModal, setShowModal] = useState<boolean>(false)
     const counter = useRef<number>(0)
     const [answer, setAnswer] = useState<number[]>(getNewAnswer())
     const [question, setQuestion] = useState<number[]>([])
@@ -24,7 +27,7 @@ function GuessFour() {
     const keyboardListener = useCallback((event: any) => {
         const key: string | number = event.key || event.keyCode;
         const guess: number = parseInt(key.toString())
-        
+
         if (options.includes(guess)) {
             updateQuestion(guess)
         }
@@ -57,17 +60,23 @@ function GuessFour() {
             setGuessProgress([]);
 
             if (status === 'win') {
-                setAnswer(getNewAnswer())
+                setShowModal(true)
+              
             }
         }
     }, [status])
 
+    const nextGame = () => {
+        setAnswer(getNewAnswer());
+        setShowModal(false);
+    }
 
     return (
         <div className="guess-four">
             <Question question={question} progress={guessProgress} />
+            {showModal && <WinModal nextGame={nextGame} />}
         </div>
     );
 }
 
-export default GuessFour;
+export default memo(GuessFour);

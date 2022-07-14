@@ -1,0 +1,46 @@
+.backdrop{
+    width:100vw;
+    height: 100vh;
+    background-color: rgba($color: #8c8a8a, $alpha: 0.5);
+    position: fixed;
+    top:0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    width:90%;
+    max-width: 600px;
+    height:300px;
+    padding:10px;
+    gap:10px;
+}
+
+.button{
+    display: block;
+    border-radius: 10px;
+    font-size: 20px;
+    height:70px;
+    width:150px;
+    cursor:pointer;
+    border:none;
+    background-color: rgb(109, 109, 109);
+
+    
+    &:hover{
+        background-color: rgb(80, 80, 80);
+    }
+}
+
+h1,h2{
+    margin:0;
+}

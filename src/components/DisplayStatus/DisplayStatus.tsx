@@ -1,5 +1,5 @@
 import './displayStatus.scss'
-import { useMemo } from 'react';
+import { useMemo,memo } from 'react';
 import { Status } from '../../types/types';
 import Check from './Check/Check';
 import Cross from './Cross/Cross';
@@ -34,4 +34,4 @@ const DisplayStatus = ({ className, status }: Props) => {
     )
 }
 
-export default DisplayStatus;
+export default memo(DisplayStatus);

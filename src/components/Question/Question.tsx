@@ -2,6 +2,7 @@
 import { sectionsMold } from '../../constants/constants';
 import './Question.scss'
 import Section from './Section/Section';
+import {memo} from 'react'
 
 type Props = { 
     question: number[], 
@@ -25,4 +26,4 @@ const Question = ({ question, progress }: Props) => {
     )
 }
 
-export default Question;
+export default memo(Question);
