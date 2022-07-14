@@ -1,52 +1,74 @@
-import React, { useEffect, useState } from 'react';
-import './GuessFour.css';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import './GuessFour.scss';
 import Question from '../Question/Question';
-import Options from '../Options/Options';
 import { getNewAnswer, questionEqualsAnswer } from '../../utils/utils';
+import { options } from '../../constants/constants'
+import { Status } from '../../types/types';
 
-type Status = 'game' | 'win' | 'lose'
 
 function GuessFour() {
 
-
+    const counter = useRef<number>(0)
     const [answer, setAnswer] = useState<number[]>(getNewAnswer())
     const [question, setQuestion] = useState<number[]>([])
-    const [status, setStatus] = useState<Status>('game')
+    const [status, setStatus] = useState<Status>('pending')
+    const [guessProgress, setGuessProgress] =
+        useState<boolean[]>([])
 
-    const updateQuestion = (input: number) => {
+
+    const updateQuestion = useCallback((input: number) => {
+        const tileStatus: boolean = answer[counter.current] === input
+        setGuessProgress((prevAnswer: boolean[]) => prevAnswer.concat(tileStatus))
         setQuestion((prevAnswer: number[]) => prevAnswer.concat(input))
-    }
+        counter.current++;
+    }, [answer])
+
+    const keyBoardListener = useCallback((event: any) => {
+        const key: string | number = event.key || event.keyCode;
+        const guess: number = parseInt(key.toString())
+        if (options.includes(guess)) {
+            updateQuestion(guess)
+        }
+
+    }, [updateQuestion])
+
 
     useEffect(() => {
-        if (question.length > 0)
-            console.log(question);
+        window.document.addEventListener('keydown', keyBoardListener)
 
+        return () => {
+            window.document.removeEventListener('keydown', keyBoardListener)
+        }
+    }, [keyBoardListener])
+
+    useEffect(() => {
         if (question.length === 4) {
-            const result: boolean = questionEqualsAnswer(question, answer)
-            console.log('--------');
-            console.log(`Your guess : ${question}`);
-            console.log(`The answer : ${answer}`);
-            console.log('--------');
-
-            const newStatus: Status = result ? 'win' : 'lose';
-            setStatus(newStatus)
+            setTimeout(() => {
+                const result: boolean = questionEqualsAnswer(question, answer)
+                const newStatus: Status = result ? 'win' : 'lose'
+                setStatus(newStatus)
+            }, 1000)
         }
     }, [answer, question])
 
     useEffect(() => {
-        if (status !== 'game') {
-            console.log(`you ${status}`);
-            setAnswer(getNewAnswer());
+        if (status !== 'pending') {
             setQuestion([]);
-            setStatus('game');
+            setStatus('pending');
+            counter.current = 0;
+            setGuessProgress([]);
+
+            if (status === 'win') {
+                console.log("wowoowowowoow");
+                setAnswer(getNewAnswer())
+            }
         }
     }, [status])
 
 
     return (
         <div className="guess-four">
-            <Question question={question}/>
-            <Options update={updateQuestion} />
+            <Question question={question} progress={guessProgress} />
         </div>
     );
 }

@@ -1,22 +1,25 @@
 
-import './Question.css'
+import { sectionsMold } from '../../constants/constants';
+import './Question.scss'
+import Section from './Section/Section';
 
-type Props = { question: number[] }
+type Props = { question: number[], progress: boolean[] }
 
-const Question = ({ question }: Props) => {
-
-
+const Question = ({ question,progress }: Props) => {
 
     return (
-     
-            <div className="question">
-                <div className="section">{question[0] ? question[0] : '?'}</div>
-                <div className="section">{question[1] ? question[1] : '?'}</div>
-                <div className="section">{question[2] ? question[2] : '?'}</div>
-                <div className="section">{question[3] ? question[3] : '?'}</div>
-            </div>
-    
-
+        <div className="question">
+            {
+                sectionsMold.map((_, index: number) =>
+                    <Section
+                        status={progress[index]}
+                        key={index}
+                        guess={question[index]}
+                        active={index === question.length}
+                        className='section' />
+                )
+            }
+        </div>
     )
 }
 
