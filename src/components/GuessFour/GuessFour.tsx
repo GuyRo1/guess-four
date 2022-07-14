@@ -61,7 +61,7 @@ function GuessFour() {
 
             if (status === 'win') {
                 setShowModal(true)
-              
+
             }
         }
     }, [status])
