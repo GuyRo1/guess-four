@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import DisplayStatus from './DisplayStatus';
 
 test('display status win', () => {
-  const { container } = render(<DisplayStatus status={'win'} />);
+  const { container } = render(<DisplayStatus className="" status={'win'} />);
   // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
   const div = container.getElementsByClassName('win')
   expect(div.length).toBe(1)
@@ -10,7 +10,7 @@ test('display status win', () => {
 });
 
 test('display status lose', () => {
-  const { container } = render(<DisplayStatus status={'lose'} />);
+  const { container } = render(<DisplayStatus className="" status={'lose'} />);
   // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
   const div = container.getElementsByClassName('lose')
   expect(div.length).toBe(1)

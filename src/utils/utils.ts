@@ -1,5 +1,3 @@
-
-
 export const getRandomDigit = (): number =>
     Math.floor(Math.random() * 9) + 1;
 

@@ -4,10 +4,12 @@ import { Status } from '../../types/types';
 import Check from './Check/Check';
 import Cross from './Cross/Cross';
 
-type Props = { status: Status }
+type Props = { 
+    className: string, 
+    status: Status 
+}
 
-const DisplayStatus = ({ status }: Props) => {
-
+const DisplayStatus = ({ className, status }: Props) => {
     const StatusComponent = useMemo(() => {
         switch (status) {
             case 'win':
@@ -15,22 +17,21 @@ const DisplayStatus = ({ status }: Props) => {
             case 'lose':
                 return Cross
             default:
-                return () => <></>
+                return ()=>null
         }
     }, [status])
 
-    const wrapperClass = useMemo(() =>
-        status === 'pending' ? 'invisible status-wrapper' : `${status} status-wrapper`
-        , [status])
+    const wrapperClass = useMemo(() =>{
+        const base = className
+        const calculate = status === 'pending' ? 'invisible status-wrapper' : `${status} status-wrapper`
+        return base+' '+calculate
+    }, [status])
 
     return (
         <div className={wrapperClass}>
             <StatusComponent />
         </div>
     )
-
-
-
 }
 
 export default DisplayStatus;

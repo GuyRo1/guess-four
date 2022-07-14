@@ -4,10 +4,19 @@
     width: 60px;
     position: absolute;
     left: -100px;
+    bottom:0;
+    top:0;
+    right:0;
+
+    &.right {
+        left: 0;
+        right: -100px;
+    }
 
     @media (min-width: $desktopView) {
         bottom: -100px;
-        left: auto;
+        left: 0;
+        right: 0;
     }
 
     svg {
@@ -84,6 +93,6 @@
     }
 }
 
-.invisible{
-    display:none;
+.invisible {
+    display: none;
 }

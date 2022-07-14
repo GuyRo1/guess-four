@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import GuessFour from './components/GuessFour/GuessFour';
 
 const App = () => {
@@ -6,4 +7,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default memo(App);

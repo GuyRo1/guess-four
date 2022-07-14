@@ -1,11 +1,14 @@
 import { useMemo } from "react";
 import DisplayStatus from "../../DisplayStatus/DisplayStatus";
 
-type Props = { status: boolean, guess: number | null, active: boolean, className: string }
+type Props = { 
+    status: boolean, 
+    guess: number | null, 
+    active: boolean, 
+    className: string 
+}
 
 const Section = ({ status, guess, active, className }: Props) => {
-
-
     const displayGuess = useMemo(() =>
         guess ? guess.toString() : '?'
         , [guess])
@@ -28,7 +31,7 @@ const Section = ({ status, guess, active, className }: Props) => {
     return (
         <div className={sectionClass}>
             {displayGuess}
-            <DisplayStatus status={sectionStatus} />
+            <DisplayStatus className={className.replace('section','').trim()} status={sectionStatus} />
         </div>
     )
 }

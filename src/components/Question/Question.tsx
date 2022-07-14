@@ -3,10 +3,12 @@ import { sectionsMold } from '../../constants/constants';
 import './Question.scss'
 import Section from './Section/Section';
 
-type Props = { question: number[], progress: boolean[] }
+type Props = { 
+    question: number[], 
+    progress: boolean[] 
+}
 
-const Question = ({ question,progress }: Props) => {
-
+const Question = ({ question, progress }: Props) => {
     return (
         <div className="question">
             {
@@ -16,7 +18,7 @@ const Question = ({ question,progress }: Props) => {
                         key={index}
                         guess={question[index]}
                         active={index === question.length}
-                        className='section' />
+                        className={`section ${index % 2 === 0 ? 'left' : 'right'}`} />
                 )
             }
         </div>

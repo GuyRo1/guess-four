@@ -10,20 +10,27 @@
     border-radius: 10px;
     min-height: 200px;
     max-width: 1100px;
-   
   
+    @media(min-width:$wideView){
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        row-gap:50px;
+        width:80%;
+    }
+
+
     @media (min-width: $desktopView) {
         display: flex;
         flex-direction: row;
     }
 
     .section {
+        overflow:none;
         position:relative;
         cursor: pointer;
         width: 150px;
         height: 200px;
         border: 2px solid rgb(132, 132, 121);
-        background-color: white;
         margin: auto;
         text-align: center;
         display: flex;
@@ -42,7 +49,7 @@
             border: 2px solid $errorColor;
         }
 
-        &.sucess{
+        &.success{
             border: 2px solid $successColor;
         }
     }

@@ -7,14 +7,12 @@ import { Status } from '../../types/types';
 
 
 function GuessFour() {
-
     const counter = useRef<number>(0)
     const [answer, setAnswer] = useState<number[]>(getNewAnswer())
     const [question, setQuestion] = useState<number[]>([])
     const [status, setStatus] = useState<Status>('pending')
     const [guessProgress, setGuessProgress] =
         useState<boolean[]>([])
-
 
     const updateQuestion = useCallback((input: number) => {
         const tileStatus: boolean = answer[counter.current] === input
@@ -24,23 +22,20 @@ function GuessFour() {
     }, [answer])
 
     const keyBoardListener = useCallback((event: any) => {
-        
-        
         const key: string | number = event.key || event.keyCode;
-        console.log(key);
         const guess: number = parseInt(key.toString())
+        
         if (options.includes(guess)) {
             updateQuestion(guess)
         }
-
     }, [updateQuestion])
 
 
     useEffect(() => {
-        window.document.addEventListener('keydown', keyBoardListener)
+        window.document.addEventListener('keyup', keyBoardListener)
 
         return () => {
-            window.document.removeEventListener('keydown', keyBoardListener)
+            window.document.removeEventListener('keyup', keyBoardListener)
         }
     }, [keyBoardListener])
 
